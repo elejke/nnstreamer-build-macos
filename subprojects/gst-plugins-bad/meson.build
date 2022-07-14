@@ -1,7 +1,7 @@
 project('gst-plugins-bad', 'c', 'cpp',
   version : '1.19.2',
   meson_version : '>= 0.54',
-  default_options : [ 'warning_level=1',
+  default_options : [ 'warning_level=1', 'cpp_std=c++11', 'c_std=c11',
                       'buildtype=debugoptimized' ])
 
 gst_version = meson.project_version()
