@@ -1,0 +1,45 @@
+# x264 Meson Build
+
+This is an experimental port of libx264 to the [Meson build system](http://mesonbuild.com/).
+
+It is primarily for development purposes, e.g. use as subproject in gst-build.
+
+## Getting started
+
+### Install meson and ninja
+
+Meson 0.52 or newer is required.
+
+You should get meson through your package manager or using:
+
+```
+python3 -m pip install meson --user
+```
+
+This will install meson into ~/.local/bin which may or may not be included
+automatically in your PATH by default.
+
+If you are building on Windows, do not use the Meson MSI installer since it is
+experimental and will likely not work.
+
+You can also run meson directly from a meson git checkout if you like.
+
+You should get `ninja` using your package manager (dnf, pacman, brew, ..) on
+Linux and MacOS or download the [official release](https://github.com/ninja-build/ninja/releases)
+and put it in your PATH.
+
+### Build x264 with Meson
+
+This uses `build` as build directory, but you can specify any other name and
+location as well of course:
+
+```
+meson build && ninja -C build
+```
+
+You can pass options (see `meson_options.txt`), e.g.
+```
+meson -Dcli=false -Dasm=disabled build && ninja -C build
+```
+
+Known to build on Debian, Windows (with MSVC) and MacOS High Sierra.

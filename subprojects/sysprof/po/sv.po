@@ -1,0 +1,1103 @@
+# Swedish translation for sysprof.
+# Copyright © 2016-2020 sysprof's COPYRIGHT HOLDER
+# This file is distributed under the same license as the sysprof package.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016, 2018, 2019, 2020.
+# Josef Andersson <l10nl18nsweja@gmail.com>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sysprof master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/sysprof/issues\n"
+"POT-Creation-Date: 2020-03-02 19:36+0000\n"
+"PO-Revision-Date: 2020-03-15 21:21+0100\n"
+"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3\n"
+
+#: data/org.gnome.Sysprof3.appdata.xml.in:5
+#: data/org.gnome.Sysprof3.desktop.in:4 src/sysprof/sysprof-application.c:199
+#: src/sysprof/sysprof-application.c:326 src/sysprof/ui/sysprof-window.ui:12
+msgid "Sysprof"
+msgstr "Sysprof"
+
+#: data/org.gnome.Sysprof3.appdata.xml.in:6
+msgid "Profile an application or entire system"
+msgstr "Profilera ett program eller hela systemet"
+
+#: data/org.gnome.Sysprof3.appdata.xml.in:9
+msgid "The GNOME Foundation"
+msgstr "GNOME Foundation"
+
+#: data/org.gnome.Sysprof3.appdata.xml.in:12
+msgid ""
+"Sysprof allows you to profile applications to aid in debugging and "
+"optimization."
+msgstr ""
+"Sysprof låter dig profilera program för att hjälpa till med felsökning och "
+"optimering."
+
+#: data/org.gnome.Sysprof3.desktop.in:5
+msgid "Profiler"
+msgstr "Profilerare"
+
+#: data/org.gnome.Sysprof3.desktop.in:6
+msgid "Profile an application or entire system."
+msgstr "Profilera ett program eller hela systemet."
+
+#: data/org.gnome.sysprof3.gschema.xml:5
+msgid "Window size"
+msgstr "Fönsterstorlek"
+
+#: data/org.gnome.sysprof3.gschema.xml:6
+msgid "Window size (width and height)."
+msgstr "Fönsterstorlek (bredd och höjd)."
+
+#: data/org.gnome.sysprof3.gschema.xml:10
+msgid "Window position"
+msgstr "Fönsterposition"
+
+#: data/org.gnome.sysprof3.gschema.xml:11
+msgid "Window position (x and y)."
+msgstr "Fönsterposition (x och y)."
+
+#: data/org.gnome.sysprof3.gschema.xml:15
+msgid "Window maximized"
+msgstr "Fönster maximerat"
+
+#: data/org.gnome.sysprof3.gschema.xml:16
+msgid "Window maximized state"
+msgstr "Maximerat tillstånd för fönster"
+
+#: data/org.gnome.sysprof3.gschema.xml:20
+msgid "Last Spawn Program"
+msgstr "Senast startade program"
+
+#: data/org.gnome.sysprof3.gschema.xml:21
+msgid ""
+"The last spawned program, which will be set in the UI upon restart of the "
+"application."
+msgstr ""
+"Det senast startade programmet, vilket kommer ställas in i "
+"användargränssnittet då programmet startas om."
+
+#: data/org.gnome.sysprof3.gschema.xml:25
+msgid "Last Spawn Inherit Environment"
+msgstr "Senast startad ärver miljö"
+
+#: data/org.gnome.sysprof3.gschema.xml:26
+msgid "If the last spawned environment inherits the parent environment."
+msgstr "Om den senast startade miljön ärver den överordnade miljön."
+
+#: data/org.gnome.sysprof3.gschema.xml:30
+msgid "Last Spawn Environment"
+msgstr "Senast startade miljö"
+
+#: data/org.gnome.sysprof3.gschema.xml:31
+msgid ""
+"The last spawned environment, which will be set in the UI upon restart of "
+"the application."
+msgstr ""
+"Den senast startade miljön, vilken kommer ställas in i användargränssnittet "
+"då programmet startas om."
+
+#: src/libsysprof/sysprof-callgraph-profile.c:445
+msgid "Sysprof was unable to generate a callgraph from the system capture."
+msgstr "Sysprof kunde inte skapa en anropsgraf från systemfångsten."
+
+#: src/libsysprof/sysprof-perf-source.c:476
+#, c-format
+msgid "Sysprof failed to find field “%s”."
+msgstr "Sysprof misslyckades med att hitta fältet ”%s”."
+
+#: src/libsysprof/sysprof-perf-source.c:489
+#, c-format
+msgid "Sysprof failed to parse offset for “%s”."
+msgstr "Sysprof misslyckades med att tolka position för ”%s”."
+
+#: src/libsysprof/sysprof-perf-source.c:553
+#, c-format
+msgid "Sysprof failed to get perf_event ID."
+msgstr "Sysprof misslyckades med att erhålla perf_event-ID."
+
+#: src/libsysprof/sysprof-perf-source.c:659
+#, c-format
+msgid "An error occurred while attempting to access performance counters"
+msgstr "Ett fel uppstod vid försök att komma åt prestandaräknare"
+
+#: src/libsysprof-ui/sysprof-battery-aid.c:182
+msgid "Battery Charge"
+msgstr "Batteriladdning"
+
+#: src/libsysprof-ui/sysprof-battery-aid.c:198
+msgid "Battery Charge (All)"
+msgstr "Batteriladdning (Alla)"
+
+#: src/libsysprof-ui/sysprof-battery-aid.c:240
+#: src/libsysprof-ui/sysprof-counters-aid.c:282
+msgid "Battery"
+msgstr "Batteri"
+
+#: src/libsysprof-ui/sysprof-callgraph-aid.c:212
+#: src/libsysprof-ui/sysprof-callgraph-aid.c:218
+msgid "Stack Traces"
+msgstr "Stackspår"
+
+#: src/libsysprof-ui/sysprof-callgraph-aid.c:226
+msgid "Stack Traces (In Kernel)"
+msgstr "Stackspår (I kärna)"
+
+#: src/libsysprof-ui/sysprof-callgraph-aid.c:234
+msgid "Stack Traces (In User)"
+msgstr "Stackspår (I användare)"
+
+#: src/libsysprof-ui/sysprof-callgraph-aid.c:243
+#: src/libsysprof-ui/sysprof-callgraph-aid.c:273
+msgid "Callgraph"
+msgstr "Anropsgraf"
+
+#: src/libsysprof-ui/sysprof-callgraph-page.ui:27
+#: src/libsysprof-ui/sysprof-memprof-page.ui:236
+msgid "Functions"
+msgstr "Funktioner"
+
+#: src/libsysprof-ui/sysprof-callgraph-page.ui:43
+#: src/libsysprof-ui/sysprof-callgraph-page.ui:104
+#: src/libsysprof-ui/sysprof-callgraph-page.ui:159
+#: src/libsysprof-ui/sysprof-memprof-page.ui:253
+#: src/libsysprof-ui/sysprof-memprof-page.ui:315
+#: src/libsysprof-ui/sysprof-memprof-page.ui:371
+msgid "Self"
+msgstr "Själv"
+
+#: src/libsysprof-ui/sysprof-callgraph-page.ui:59
+#: src/libsysprof-ui/sysprof-callgraph-page.ui:120
+#: src/libsysprof-ui/sysprof-callgraph-page.ui:175
+#: src/libsysprof-ui/sysprof-memprof-page.ui:269
+#: src/libsysprof-ui/sysprof-memprof-page.ui:331
+#: src/libsysprof-ui/sysprof-memprof-page.ui:387
+msgid "Total"
+msgstr "Totalt"
+
+#: src/libsysprof-ui/sysprof-callgraph-page.ui:88
+#: src/libsysprof-ui/sysprof-memprof-page.ui:298
+msgid "Callers"
+msgstr "Anropare"
+
+#: src/libsysprof-ui/sysprof-callgraph-page.ui:151
+#: src/libsysprof-ui/sysprof-memprof-page.ui:362
+msgid "Descendants"
+msgstr "Ättlingar"
+
+#: src/libsysprof-ui/sysprof-callgraph-page.ui:190
+#: src/libsysprof-ui/sysprof-details-page.ui:322
+msgid "Hits"
+msgstr "Träffar"
+
+#: src/libsysprof-ui/sysprof-callgraph-page.ui:213
+msgid "Generating Callgraph"
+msgstr "Genererar anropsgraf"
+
+#: src/libsysprof-ui/sysprof-callgraph-page.ui:214
+msgid "Sysprof is busy creating the selected callgraph."
+msgstr "Sysprof är upptaget med att skapa vald anropsgraf."
+
+#: src/libsysprof-ui/sysprof-callgraph-page.ui:224
+#: src/libsysprof-ui/sysprof-memprof-page.ui:433
+msgid "Not Enough Samples"
+msgstr "För få samplingar"
+
+#: src/libsysprof-ui/sysprof-callgraph-page.ui:225
+#: src/libsysprof-ui/sysprof-memprof-page.ui:434
+msgid "More samples are necessary to display a callgraph."
+msgstr "Fler samplingar är nödvändiga för att skapa en anropsgraf."
+
+#: src/libsysprof-ui/sysprof-counters-aid.c:221
+#: src/libsysprof-ui/sysprof-counters-aid.c:226
+msgid "Counters"
+msgstr "Räknare"
+
+#: src/libsysprof-ui/sysprof-cpu-aid.c:207
+#: src/libsysprof-ui/sysprof-cpu-aid.c:355
+msgid "CPU Usage"
+msgstr "Processoranvändning"
+
+#: src/libsysprof-ui/sysprof-cpu-aid.c:214
+msgid "CPU Frequency"
+msgstr "Processorfrekvens"
+
+#: src/libsysprof-ui/sysprof-cpu-aid.c:218
+msgid "CPU Frequency (All)"
+msgstr "Processorfrekvens (Alla)"
+
+#. Translators: CPU is the processor.
+#: src/libsysprof-ui/sysprof-cpu-aid.c:227
+#: src/libsysprof-ui/sysprof-cpu-aid.c:250
+msgid "CPU Usage (All)"
+msgstr "Processoranvändning (Alla)"
+
+#: src/libsysprof-ui/sysprof-cpu-aid.c:316
+msgid "Processes"
+msgstr "Processer"
+
+#: src/libsysprof-ui/sysprof-details-page.c:224
+msgid "Memory Capture"
+msgstr "Minnesfångst"
+
+#: src/libsysprof-ui/sysprof-details-page.c:238
+#, c-format
+msgid "%0.4lf seconds"
+msgstr "%0.4lf sekunder"
+
+#: src/libsysprof-ui/sysprof-details-page.ui:21
+msgid "Filename"
+msgstr "Filnamn"
+
+#: src/libsysprof-ui/sysprof-details-page.ui:35
+msgid "Captured at"
+msgstr "Fångat"
+
+#: src/libsysprof-ui/sysprof-details-page.ui:50
+#: src/libsysprof-ui/sysprof-marks-page.ui:95
+#: src/libsysprof-ui/sysprof-marks-page.ui:215
+msgid "Duration"
+msgstr "Längd"
+
+#: src/libsysprof-ui/sysprof-details-page.ui:65
+msgid "CPU Model"
+msgstr "Processormodell"
+
+#: src/libsysprof-ui/sysprof-details-page.ui:80
+msgid "Samples Captured"
+msgstr "Samplingar fångade"
+
+#: src/libsysprof-ui/sysprof-details-page.ui:94
+msgid "Marks Captured"
+msgstr "Märken fångade"
+
+#: src/libsysprof-ui/sysprof-details-page.ui:108
+msgid "Processes Captured"
+msgstr "Processer fångade"
+
+#: src/libsysprof-ui/sysprof-details-page.ui:122
+msgid "Forks Captured"
+msgstr "Fork-anrop fångade"
+
+#: src/libsysprof-ui/sysprof-details-page.ui:136
+msgid "Counters Captured"
+msgstr "Räknare fångade"
+
+#: src/libsysprof-ui/sysprof-details-page.ui:151
+msgid "Allocations Captured"
+msgstr "Allokeringar fångade"
+
+#: src/libsysprof-ui/sysprof-details-page.ui:309
+#: src/libsysprof-ui/sysprof-marks-page.ui:52
+msgid "Mark"
+msgstr "Märke"
+
+#: src/libsysprof-ui/sysprof-details-page.ui:335
+msgid "Min"
+msgstr "Min"
+
+#: src/libsysprof-ui/sysprof-details-page.ui:348
+msgid "Max"
+msgstr "Max"
+
+#: src/libsysprof-ui/sysprof-details-page.ui:361
+msgid "Avg"
+msgstr "Mdl"
+
+#: src/libsysprof-ui/sysprof-diskstat-aid.c:205
+#: src/libsysprof-ui/sysprof-diskstat-aid.c:267
+msgid "Disk"
+msgstr "Disk"
+
+#: src/libsysprof-ui/sysprof-diskstat-aid.c:239
+msgid "Reads"
+msgstr "Läsningar"
+
+#: src/libsysprof-ui/sysprof-diskstat-aid.c:239
+msgid "Writes"
+msgstr "Skrivningar"
+
+#: src/libsysprof-ui/sysprof-display.c:229
+msgid "Recording Failed"
+msgstr "Inspelning misslyckades"
+
+#: src/libsysprof-ui/sysprof-display.c:234
+msgid "Recording…"
+msgstr "Spelar in…"
+
+#. translators: %s is replaced with locale specific time of recording
+#: src/libsysprof-ui/sysprof-display.c:258
+#, c-format
+msgid "Recording at %s"
+msgstr "Inspelning från %s"
+
+#: src/libsysprof-ui/sysprof-display.c:262
+msgid "New Recording"
+msgstr "Ny inspelning"
+
+#: src/libsysprof-ui/sysprof-display.c:1185
+msgid "Save Recording"
+msgstr "Spara inspelning"
+
+#: src/libsysprof-ui/sysprof-display.c:1188
+msgid "Save"
+msgstr "Spara"
+
+#. Translators: This is a button.
+#: src/libsysprof-ui/sysprof-display.c:1189 src/sysprof/sysprof-window.c:277
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: src/libsysprof-ui/sysprof-display.c:1215
+#, c-format
+msgid "Failed to save recording: %s"
+msgstr "Misslyckades med att spara inspelning: %s"
+
+#: src/libsysprof-ui/sysprof-display.ui:49
+#: src/libsysprof-ui/sysprof-marks-page.ui:19
+msgid "Details"
+msgstr "Detaljer"
+
+#: src/libsysprof-ui/sysprof-environ-editor-row.ui:58
+msgid "Remove environment variable"
+msgstr "Ta bort miljövariabel"
+
+#: src/libsysprof-ui/sysprof-environ-editor.c:71
+msgid "New variable…"
+msgstr "Ny variabel…"
+
+#: src/libsysprof-ui/sysprof-failed-state-view.ui:22
+msgid "Ouch, that hurt!"
+msgstr "Aj, det där gjorde ont!"
+
+#: src/libsysprof-ui/sysprof-failed-state-view.ui:39
+msgid "Something unexpectedly went wrong while trying to profile your system."
+msgstr "Något gick oväntat fel då ditt system skulle profileras."
+
+#: src/libsysprof-ui/sysprof-log-model.c:210
+#: src/libsysprof-ui/sysprof-logs-page.ui:58
+#: src/libsysprof-ui/sysprof-marks-page.ui:109
+msgid "Message"
+msgstr "Meddelande"
+
+#: src/libsysprof-ui/sysprof-log-model.c:213
+msgid "Info"
+msgstr "Info"
+
+#: src/libsysprof-ui/sysprof-log-model.c:216
+msgid "Critical"
+msgstr "Kritisk"
+
+#: src/libsysprof-ui/sysprof-log-model.c:219
+msgid "Error"
+msgstr "Fel"
+
+#: src/libsysprof-ui/sysprof-log-model.c:222
+msgid "Debug"
+msgstr "Felsökning"
+
+#: src/libsysprof-ui/sysprof-log-model.c:225
+msgid "Warning"
+msgstr "Varning"
+
+#: src/libsysprof-ui/sysprof-logs-aid.c:195
+#: src/libsysprof-ui/sysprof-logs-aid.c:199
+#: src/libsysprof-ui/sysprof-logs-aid.c:204
+#: src/libsysprof-ui/sysprof-logs-aid.c:210
+msgid "Logs"
+msgstr "Loggar"
+
+#: src/libsysprof-ui/sysprof-logs-page.ui:15
+#: src/libsysprof-ui/sysprof-marks-page.ui:67
+msgid "Time"
+msgstr "Tid"
+
+#: src/libsysprof-ui/sysprof-logs-page.ui:29
+msgid "Severity"
+msgstr "Allvarsgrad"
+
+#: src/libsysprof-ui/sysprof-logs-page.ui:44
+msgid "Domain"
+msgstr "Domän"
+
+#: src/libsysprof-ui/sysprof-marks-aid.c:237
+#: src/libsysprof-ui/sysprof-marks-aid.c:242
+msgid "Timings"
+msgstr "Tidsvärden"
+
+#: src/libsysprof-ui/sysprof-marks-page.ui:38
+msgid "Group"
+msgstr "Grupp"
+
+#: src/libsysprof-ui/sysprof-marks-page.ui:81
+msgid "End"
+msgstr "Slut"
+
+#: src/libsysprof-ui/sysprof-marks-page.ui:245
+msgid "No Timings Available"
+msgstr "Inga tidsvärden tillgängliga"
+
+#: src/libsysprof-ui/sysprof-marks-page.ui:246
+msgid "No timing data was found for the current selection"
+msgstr "Inga tidsdata hittades för den aktuella markeringen"
+
+#: src/libsysprof-ui/sysprof-memory-aid.c:68
+msgid "Memory Usage"
+msgstr "Minnesanvändning"
+
+#: src/libsysprof-ui/sysprof-memprof-aid.c:182
+msgid "Memory"
+msgstr "Minne"
+
+#: src/libsysprof-ui/sysprof-memprof-aid.c:193
+#: src/libsysprof-ui/sysprof-memprof-visualizer.c:113
+msgid "Memory Allocations"
+msgstr "Minnesallokeringar"
+
+#: src/libsysprof-ui/sysprof-memprof-aid.c:224
+msgid "Track Allocations"
+msgstr "Spåra allokeringar"
+
+#. translators: %s is replaced with the the lower and upper bound memory sizes in bytes
+#: src/libsysprof-ui/sysprof-memprof-page.c:235
+#, c-format
+msgid "> %s to %s"
+msgstr "> %s till %s"
+
+#: src/libsysprof-ui/sysprof-memprof-page.ui:23
+msgid "Summary"
+msgstr "Sammanfattning"
+
+#: src/libsysprof-ui/sysprof-memprof-page.ui:31
+msgid "All Allocations"
+msgstr "Alla allokeringar"
+
+#: src/libsysprof-ui/sysprof-memprof-page.ui:40
+msgid "Temporary Allocations"
+msgstr "Tillfälliga allokeringar"
+
+#: src/libsysprof-ui/sysprof-memprof-page.ui:402
+msgid "Size"
+msgstr "Storlek"
+
+#: src/libsysprof-ui/sysprof-memprof-page.ui:422
+msgid "Analyzing Memory Allocations"
+msgstr "Analyserar minnesallokeringar"
+
+#: src/libsysprof-ui/sysprof-memprof-page.ui:423
+msgid "Sysprof is busy analyzing memory allocations."
+msgstr "Sysprof är upptaget med att analysera minnesallokeringar."
+
+#: src/libsysprof-ui/sysprof-memprof-visualizer.c:113
+msgid "Memory Used"
+msgstr "Minne använt"
+
+#: src/libsysprof-ui/sysprof-netdev-aid.c:204
+#: src/libsysprof-ui/sysprof-netdev-aid.c:264
+msgid "Network"
+msgstr "Nätverk"
+
+#. translators: "Compositor" means desktop compositor, gnome-shell/mutter in particular
+#: src/libsysprof-ui/sysprof-profiler-assistant.ui:27
+msgid "GNOME Shell"
+msgstr "GNOME Shell"
+
+#: src/libsysprof-ui/sysprof-profiler-assistant.ui:95
+msgid "Profilers"
+msgstr "Profilerare"
+
+#: src/libsysprof-ui/sysprof-profiler-assistant.ui:198
+msgid ""
+"Track application memory allocations (Sysprof must launch target application)"
+msgstr ""
+"Spåra minnesallokeringar för program (Sysprof måste starta målprogrammet)"
+
+#: src/libsysprof-ui/sysprof-profiler-assistant.ui:214
+msgid "All Processes"
+msgstr "Alla processer"
+
+#: src/libsysprof-ui/sysprof-profiler-assistant.ui:244
+msgid ""
+"Include all applications and operating system kernel in callgraph. This may "
+"not be possible on some system system configurations."
+msgstr ""
+"Inkludera alla program och operativsystemets kärna i anropsgraf. Detta är "
+"kanske inte möjligt i vissa systems systeminställningar."
+
+#: src/libsysprof-ui/sysprof-profiler-assistant.ui:272
+msgid "Search Processes…"
+msgstr "Sök processer…"
+
+#: src/libsysprof-ui/sysprof-profiler-assistant.ui:291
+msgid "Loading Processes…"
+msgstr "Läser in processer…"
+
+#: src/libsysprof-ui/sysprof-profiler-assistant.ui:315
+msgid "Launch Application"
+msgstr "Starta program"
+
+#: src/libsysprof-ui/sysprof-profiler-assistant.ui:344
+msgid "Enable to launch a program of your choosing before profiling."
+msgstr "Aktivera körning av ett valfritt program innan profilering."
+
+#: src/libsysprof-ui/sysprof-profiler-assistant.ui:372
+msgid "Command Line"
+msgstr "Kommandorad"
+
+#: src/libsysprof-ui/sysprof-profiler-assistant.ui:391
+msgid "Environment"
+msgstr "Miljö"
+
+#: src/libsysprof-ui/sysprof-profiler-assistant.ui:417
+msgid "Inherit Environment"
+msgstr "Ärv miljö"
+
+#: src/libsysprof-ui/sysprof-profiler-assistant.ui:441
+msgid ""
+"Enable to ensure your application shares the display, message-bus, and other "
+"desktop environment settings."
+msgstr ""
+"Aktivera för att säkerställa att ditt program delar display, meddelandebuss "
+"och andra skrivbordsmiljöinställningar."
+
+#: src/libsysprof-ui/sysprof-profiler-assistant.ui:467
+msgid "Allow CPU Throttling"
+msgstr "Tillåt processorstrypning"
+
+#: src/libsysprof-ui/sysprof-profiler-assistant.ui:495
+msgid ""
+"If disabled, your CPU will be placed in performance mode. It will be "
+"restored after profiling."
+msgstr ""
+"Om inaktiverad kommer din processor att placeras i prestandaläge. Den kommer "
+"att återställas efter profilering."
+
+#: src/libsysprof-ui/sysprof-profiler-assistant.ui:516
+msgid "_Record"
+msgstr "_Spela in"
+
+#: src/libsysprof-ui/sysprof-rapl-aid.c:175
+#: src/libsysprof-ui/sysprof-rapl-aid.c:248
+msgid "Energy Usage"
+msgstr "Energianvändning"
+
+#: src/libsysprof-ui/sysprof-rapl-aid.c:180
+msgid "Energy Usage (All)"
+msgstr "Energianvändning (Alla)"
+
+#: src/libsysprof-ui/sysprof-recording-state-view.ui:32
+msgid ""
+"Did you know you can use <a href=\"help:sysprof\">sysprof-cli</a> to record?"
+msgstr ""
+"Visste du att du kan använda <a href=\"help:sysprof\">sysprof-cli</a> för "
+"att spela in?"
+
+#: src/libsysprof-ui/sysprof-recording-state-view.ui:47
+msgid "Events"
+msgstr "Händelser"
+
+#: src/libsysprof-ui/sysprof-recording-state-view.ui:73
+msgid "_Stop Recording"
+msgstr "_Sluta spela in"
+
+#: src/libsysprof-ui/sysprof-visualizer-group-header.c:119
+#: src/libsysprof-ui/sysprof-visualizers-frame.ui:54
+msgid "Select for more details"
+msgstr "Välj för mer detaljer"
+
+#: src/libsysprof-ui/sysprof-visualizer-group-header.c:141
+msgid "Display supplemental graphs"
+msgstr "Visa stöddiagram"
+
+#: src/libsysprof-ui/sysprof-visualizers-frame.ui:41
+msgid "Instruments"
+msgstr "Instrument"
+
+#: src/sysprofd/org.gnome.sysprof3.policy.in:13
+msgid "Profile the system"
+msgstr "Profilera systemet"
+
+#: src/sysprofd/org.gnome.sysprof3.policy.in:14
+msgid "Authentication is required to profile the system."
+msgstr "Autentisering krävs för att profilera systemet."
+
+#: src/sysprofd/org.gnome.sysprof3.policy.in:26
+msgid "Open a perf event stream"
+msgstr "Öppna en händelseström för perf"
+
+#: src/sysprofd/org.gnome.sysprof3.policy.in:27
+msgid "Authentication is required to access system performance counters."
+msgstr "Autentisering krävs för att komma åt systemprestandaräknare."
+
+#: src/sysprofd/org.gnome.sysprof3.policy.in:37
+msgid "Get a list of kernel symbols and their address"
+msgstr "Erhåll en lista över kärnsymboler och deras adresser"
+
+#: src/sysprofd/org.gnome.sysprof3.policy.in:38
+msgid "Authentication is required to access Linux kernel information."
+msgstr "Autentisering krävs för att komma åt Linux-kärninformation."
+
+#: src/sysprof/gtk/help-overlay.ui:8
+msgctxt "shortcut window"
+msgid "Sysprof Shortcuts"
+msgstr "Sysprof-genvägar"
+
+#: src/sysprof/gtk/help-overlay.ui:12
+msgctxt "shortcut window"
+msgid "Files"
+msgstr "Filer"
+
+#: src/sysprof/gtk/help-overlay.ui:16
+msgctxt "shortcut window"
+msgid "Save Recording"
+msgstr "Spara inspelning"
+
+#: src/sysprof/gtk/help-overlay.ui:17
+msgctxt "shortcut window"
+msgid "Saves the current recording"
+msgstr "Sparar den aktuella inspelningen"
+
+#: src/sysprof/gtk/help-overlay.ui:24
+msgctxt "shortcut window"
+msgid "Open recording"
+msgstr "Öppna inspelning"
+
+#: src/sysprof/gtk/help-overlay.ui:25
+msgctxt "shortcut window"
+msgid "Opens a previously saved recording"
+msgstr "Öppnar en tidigare sparad inspelning"
+
+#: src/sysprof/gtk/help-overlay.ui:34
+msgctxt "shortcut window"
+msgid "Recording"
+msgstr "Spelar in"
+
+#: src/sysprof/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Record again"
+msgstr "Spela in igen"
+
+#: src/sysprof/gtk/help-overlay.ui:39
+msgctxt "shortcut window"
+msgid "Starts a new recording"
+msgstr "Startar en ny inspelning"
+
+#: src/sysprof/gtk/help-overlay.ui:46
+msgctxt "shortcut window"
+msgid "Stop recording"
+msgstr "Sluta spela in"
+
+#: src/sysprof/gtk/help-overlay.ui:55
+msgctxt "shortcut window"
+msgid "Callgraph"
+msgstr "Anropsgraf"
+
+#: src/sysprof/gtk/help-overlay.ui:59
+msgctxt "shortcut window"
+msgid "Expand function"
+msgstr "Utöka funktionen"
+
+#: src/sysprof/gtk/help-overlay.ui:60
+msgctxt "shortcut window"
+msgid "Shows the direct descendants of the callgraph function"
+msgstr "Visar direkta arvingar för anropsgrafsfunktionen"
+
+#: src/sysprof/gtk/help-overlay.ui:67
+msgctxt "shortcut window"
+msgid "Collapse function"
+msgstr "Fäll ihop funktionen"
+
+#: src/sysprof/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Hides all callgraph descendants below the selected function"
+msgstr "Döljer alla anropsgrafsarvingar under den valda funktionen"
+
+#: src/sysprof/gtk/help-overlay.ui:75
+msgctxt "shortcut window"
+msgid "Jump into function"
+msgstr "Hoppa in i funktion"
+
+#: src/sysprof/gtk/help-overlay.ui:76
+msgctxt "shortcut window"
+msgid "Selects the function or file as the top of the callgraph"
+msgstr "Markerar funktionen eller filen som toppen på dess anropsgraf"
+
+#: src/sysprof/gtk/help-overlay.ui:85
+msgctxt "shortcut window"
+msgid "Visualizers"
+msgstr "Visualiserare"
+
+#: src/sysprof/gtk/help-overlay.ui:89
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "Zooma in"
+
+#: src/sysprof/gtk/help-overlay.ui:96
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "Zooma ut"
+
+#: src/sysprof/gtk/help-overlay.ui:103
+msgctxt "shortcut window"
+msgid "Reset zoom"
+msgstr "Återställ zoom"
+
+#: src/sysprof/gtk/menus.ui:6
+msgid "New Tab"
+msgstr "Ny flik"
+
+#: src/sysprof/gtk/menus.ui:11
+msgid "New Window"
+msgstr "Nytt fönster"
+
+#: src/sysprof/gtk/menus.ui:18
+msgid "Open Recording…"
+msgstr "Öppna inspelning…"
+
+#: src/sysprof/gtk/menus.ui:23
+msgid "Save Recording…"
+msgstr "Spara inspelning…"
+
+#: src/sysprof/gtk/menus.ui:30
+msgid "Record Again"
+msgstr "Spela in igen"
+
+#: src/sysprof/gtk/menus.ui:37
+msgid "Close"
+msgstr "Stäng"
+
+#: src/sysprof/gtk/menus.ui:44
+msgid "Keyboard Shortcuts"
+msgstr "Tangentbordsgenvägar"
+
+#: src/sysprof/gtk/menus.ui:49
+msgid "Help"
+msgstr "Hjälp"
+
+#: src/sysprof/gtk/menus.ui:54
+msgid "About Sysprof"
+msgstr "Om Sysprof"
+
+#: src/sysprof/sysprof-application.c:191
+msgid "A system profiler"
+msgstr "En systemprofilerare"
+
+#: src/sysprof/sysprof-application.c:196
+msgid "translator-credits"
+msgstr ""
+"Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
+"Skicka synpunkter på översättningen till\n"
+"<tp-sv@listor.tp-sv.se>."
+
+#: src/sysprof/sysprof-application.c:202
+msgid "Learn more about Sysprof"
+msgstr "Lär dig mer om Sysprof"
+
+#. Translators: This is a window title.
+#: src/sysprof/sysprof-window.c:271
+msgid "Open Capture…"
+msgstr "Öppna fångst…"
+
+#. Translators: This is a button.
+#: src/sysprof/sysprof-window.c:275
+msgid "Open"
+msgstr "Öppna"
+
+#: src/sysprof/sysprof-window.c:282
+msgid "Sysprof Captures"
+msgstr "Sysprof-fångster"
+
+#: src/sysprof/sysprof-window.c:287
+msgid "All Files"
+msgstr "Alla filer"
+
+#: src/tools/sysprof-cli.c:59
+msgid "Stopping profiler. Press twice more ^C to force exit."
+msgstr "Stoppar profilerare. Tryck ^C två gånger till för att tvinga avslut."
+
+#: src/tools/sysprof-cli.c:72
+msgid "Profiler stopped."
+msgstr "Profilerare stoppades."
+
+#: src/tools/sysprof-cli.c:105
+msgid "--merge requires at least 2 filename arguments"
+msgstr "--merge kräver minst 2 filnamnsargument"
+
+#: src/tools/sysprof-cli.c:217
+msgid "Make sysprof specific to a task"
+msgstr "Gör sysprof specifik för en uppgift"
+
+#: src/tools/sysprof-cli.c:217
+msgid "PID"
+msgstr "PID"
+
+#: src/tools/sysprof-cli.c:218
+msgid "Run a command and profile the process"
+msgstr "Kör ett kommando och profilera processen"
+
+#: src/tools/sysprof-cli.c:218
+msgid "COMMAND"
+msgstr "KOMMANDO"
+
+#: src/tools/sysprof-cli.c:219
+msgid ""
+"Set environment variable for spawned process. Can be used multiple times."
+msgstr "Ställ in miljövariabel för startad process. Kan användas flera gånger."
+
+#: src/tools/sysprof-cli.c:219
+msgid "VAR=VALUE"
+msgstr "VAR=VÄRDE"
+
+#: src/tools/sysprof-cli.c:220
+msgid "Force overwrite the capture file"
+msgstr "Tvinga överskrivning av fångstfilen"
+
+#: src/tools/sysprof-cli.c:221
+msgid "Disable recording of battery statistics"
+msgstr "Inaktivera inspelning av batteristatistik"
+
+#: src/tools/sysprof-cli.c:222
+msgid "Disable recording of CPU statistics"
+msgstr "Inaktivera inspelning av processorstatistik"
+
+#: src/tools/sysprof-cli.c:223
+msgid "Disable recording of Disk statistics"
+msgstr "Inaktivera inspelning av diskstatistik"
+
+#: src/tools/sysprof-cli.c:224
+msgid "Do not record stacktraces using Linux perf"
+msgstr "Spela inte in stackspår med Linux perf"
+
+#: src/tools/sysprof-cli.c:225
+msgid "Do not append symbol name information from local machine"
+msgstr "Lägg inte till symbolnamnsinformation från lokal maskin"
+
+#: src/tools/sysprof-cli.c:226
+msgid "Disable recording of memory statistics"
+msgstr "Inaktivera inspelning av minnesstatistik"
+
+#: src/tools/sysprof-cli.c:227
+msgid "Disable recording of network statistics"
+msgstr "Inaktivera inspelning av nätverksstatistik"
+
+#: src/tools/sysprof-cli.c:228
+msgid "Set SYSPROF_TRACE_FD environment for subprocess"
+msgstr "Ställ in SYSPROF_TRACE_FD-miljö för underprocess"
+
+#: src/tools/sysprof-cli.c:229
+msgid "Set GJS_TRACE_FD environment to trace GJS processes"
+msgstr "Ställ in GJS_TRACE_FD-miljö för att spåra GJS-processer"
+
+#: src/tools/sysprof-cli.c:230
+msgid "Set GTK_TRACE_FD environment to trace a GTK application"
+msgstr "Ställ in GTK_TRACE_FD-miljö för att spåra ett GTK-program"
+
+#: src/tools/sysprof-cli.c:231
+msgid "Include RAPL energy statistics"
+msgstr "Inkludera RAPL-energistatistik"
+
+#: src/tools/sysprof-cli.c:232
+msgid "Profile memory allocations and frees"
+msgstr "Profilera minnesallokeringar och frigöranden"
+
+#: src/tools/sysprof-cli.c:233
+msgid "Connect to org.gnome.Shell for profiler statistics"
+msgstr "Anslut till org.gnome.Shell för profilerarstatistik"
+
+#: src/tools/sysprof-cli.c:234
+msgid "Merge all provided *.syscap files and write to stdout"
+msgstr ""
+"Slå samman alla tillhandahållna *.syscap-filer och skriv till standard ut"
+
+#: src/tools/sysprof-cli.c:235
+msgid "Print the sysprof-cli version and exit"
+msgstr "Skriv ut version för sysprof-cli och avsluta"
+
+#: src/tools/sysprof-cli.c:268
+msgid "[CAPTURE_FILE] [-- COMMAND ARGS] — Sysprof"
+msgstr "[FÅNGSTFIL] [-- KOMMANDO ARGUMENT] — Sysprof"
+
+#: src/tools/sysprof-cli.c:271
+msgid ""
+"\n"
+"Examples:\n"
+"\n"
+"  # Record gtk4-widget-factory using trace-fd to get application provided\n"
+"  # data as well as GTK and GNOME Shell data providers\n"
+"  sysprof-cli --gtk --gnome-shell --use-trace-fd -- gtk4-widget-factory\n"
+"\n"
+"  # Merge multiple syscap files into one\n"
+"  sysprof-cli --merge a.syscap b.syscap > c.syscap\n"
+msgstr ""
+"\n"
+"Exempel:\n"
+"\n"
+"  # Spela in gtk4-widget-factory med trace-fd för att få data från program\n"
+"  # så väl som GTK- och GNOME Shell-dataleverantörer\n"
+"  sysprof-cli --gtk --gnome-shell --use-trace-fd -- gtk4-widget-factory\n"
+"\n"
+"  # Slå samman flera syscap-filer till en\n"
+"  sysprof-cli --merge a.syscap b.syscap > c.syscap\n"
+
+#: src/tools/sysprof-cli.c:304
+msgid "Too many arguments were passed to sysprof-cli:"
+msgstr "För många argument skickades till sysprof-cli:"
+
+#. Translators: %s is a file name.
+#: src/tools/sysprof-cli.c:361
+#, c-format
+msgid "%s exists. Use --force to overwrite\n"
+msgstr "%s existerar. Använd --force för att skriva över\n"
+
+#: src/tools/sysprof-profiler-ctl.c:45
+msgid "Connect to the system bus"
+msgstr "Anslut till systembussen"
+
+#: src/tools/sysprof-profiler-ctl.c:46
+msgid "Connect to the session bus"
+msgstr "Anslut till sessionsbussen"
+
+#: src/tools/sysprof-profiler-ctl.c:47
+msgid "Connect to the given D-Bus address"
+msgstr "Anslut till den angivna D-Bus-adressen"
+
+#: src/tools/sysprof-profiler-ctl.c:48
+msgid "Destination D-Bus name to invoke method on"
+msgstr "Namn på D-Bus-mål att anropa metod på"
+
+#: src/tools/sysprof-profiler-ctl.c:49
+msgid "Object path to invoke method on"
+msgstr "Objektsökväg att anropa metod på"
+
+#: src/tools/sysprof-profiler-ctl.c:49
+msgid "/org/gnome/Sysprof3/Profiler"
+msgstr "/org/gnome/Sysprof3/Profiler"
+
+#: src/tools/sysprof-profiler-ctl.c:50
+msgid "Timeout in seconds"
+msgstr "Tidsgräns i sekunder"
+
+#: src/tools/sysprof-profiler-ctl.c:51
+msgid "Overwrite FILENAME if it exists"
+msgstr "Skriv över FILNAMN om det existerar"
+
+#: src/tools/sysprof-profiler-ctl.c:79
+msgid "--dest=BUS_NAME [FILENAME] - connect to an embedded sysprof profiler"
+msgstr ""
+"--dest=BUSSNAMN [FILNAMN] - anslut till en inbäddad sysprof-profilerare"
+
+#~ msgid "Cumulative"
+#~ msgstr "Kumulativt"
+
+#~ msgid "Welcome to Sysprof"
+#~ msgstr "Välkommen till Sysprof"
+
+#~ msgid "Start profiling your system with the <b>Record</b> button above"
+#~ msgstr "Börja profilera ditt system med knappen <b>Spela in</b> ovan"
+
+#~ msgid "Search"
+#~ msgstr "Sök"
+
+#~ msgid "Key"
+#~ msgstr "Nyckel"
+
+#~ msgid "Value"
+#~ msgstr "Värde"
+
+#~ msgid "New Process"
+#~ msgstr "Ny process"
+
+#~ msgid "00:00"
+#~ msgstr "00:00"
+
+#~ msgid ""
+#~ "Sysprof requires authorization to access your computers performance "
+#~ "counters."
+#~ msgstr ""
+#~ "Sysprof kräver autentisering för att komma åt din dators prestandaräknare."
+
+#~ msgid "CPU"
+#~ msgstr "CPU"
+
+#~ msgid "FPS"
+#~ msgstr "Bilder/s"
+
+#~ msgid "%u Process"
+#~ msgid_plural "%u Processes"
+#~ msgstr[0] "%u process"
+#~ msgstr[1] "%u processer"
+
+#~ msgid "The command line arguments provided are invalid"
+#~ msgstr "Kommandoradsargumenten som tillhandahölls är ogiltiga"
+
+#~ msgid "Not running"
+#~ msgstr "Kör inte"
+
+#~ msgid "_Close"
+#~ msgstr "S_täng"
+
+#~ msgid "Zoom out (Ctrl+-)"
+#~ msgstr "Zooma ut (Ctrl+-)"
+
+#~ msgid "Reset zoom level (Ctrl+0)"
+#~ msgstr "Återställ zoomnivå (Ctrl+0)"
+
+#~ msgid "Zoom in (Ctrl++)"
+#~ msgstr "Zooma in (Ctrl++)"
+
+#~ msgctxt "menu label"
+#~ msgid "Open Capture…"
+#~ msgstr "Öppna fångst…"
+
+#~ msgid "Save As…"
+#~ msgstr "Spara som…"
+
+#~ msgid "Screenshot"
+#~ msgstr "Skärmbild"
+
+#~ msgid "Samples: %u"
+#~ msgstr "Samplingar: %u"
+
+#~ msgid "%s — %s"
+#~ msgstr "%s — %s"
+
+#~ msgid "Record"
+#~ msgstr "Spela in"
+
+#~ msgid "Stop"
+#~ msgstr "Stoppa"
+
+#~ msgid "Building profile…"
+#~ msgstr "Bygger profil…"
+
+#~ msgid "Stopping…"
+#~ msgstr "Stoppar…"
+
+#~ msgid "Save Capture As…"
+#~ msgstr "Spara fångst som…"
+
+#~ msgid "An error occurred while attempting to save your capture: %s"
+#~ msgstr "Ett fel uppstod vid försök att spara din fångst: %s"
+
+#~ msgid "The file “%s” could not be opened. Only local files are supported."
+#~ msgstr "Filen ”%s” kunde inte öppnas. Endast lokala filer stöds."
+
+#~ msgid "sysprof"
+#~ msgstr "sysprof"
+
+#~ msgid "About"
+#~ msgstr "Om"
+
+#~ msgid "_Quit"
+#~ msgstr "A_vsluta"
+
+#~ msgid "%s - %s"
+#~ msgstr "%s - %s"

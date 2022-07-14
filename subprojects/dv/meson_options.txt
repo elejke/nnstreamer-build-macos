@@ -1,0 +1,25 @@
+option('asm', type: 'feature', value: 'auto',
+  description: 'Use architecture specific assembly code (probably only works with GCC/clang)')
+
+option('yuv-format', type : 'combo', choices : ['YV12', 'YUY2'], value : 'YUY2',
+  description: 'YUV format')
+
+option('popt', type: 'feature', value: 'auto')
+
+option('utils', type : 'feature', value : 'disabled',
+  description: 'Build uninstalled utilities')
+
+option('tests', type : 'feature', value : 'auto', yield : true,
+  description: 'Build tests')
+
+# tools
+option('tools', type : 'feature', value : 'disabled',
+  description: 'Build playdv and encodedv tools')
+
+#option('gtk', type: 'feature', value: 'auto',
+#  description: 'Use GTK for display in playdv tool')
+#option('sdl', type: 'feature', value: 'disabled',
+#  description: 'Use SDL for display in playdv tool')
+#option('xv', type: 'feature', value: 'auto',
+#  description: 'Use XV for display in playdv tool')
+

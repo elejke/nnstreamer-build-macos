@@ -1,0 +1,26 @@
+[package]
+name = "dssim"
+categories = ["multimedia::images"]
+description = "API for the DSSIM tool. AGPL-licensed. Measures structural similarity between images using a multi-scale variant of the SSIM algorithm."
+repository = "https://github.com/pornel/dssim.git"
+documentation = "https://docs.rs/dssim"
+homepage = "https://github.com/pornel/dssim"
+include = ["src/*.rs", "src/*.c", "src/*.h", "LICENSE", "README.md", "Cargo.toml"]
+keywords = ["ssim", "image", "comparison", "metric"]
+license = "AGPL-3.0"
+authors = ["Kornel <pornel@pornel.net>"]
+build = "src/build.rs"
+version = "1.0.0"
+
+[lib]
+name = "dssim"
+
+[build-dependencies]
+gcc = "0.3.51"
+
+[dependencies]
+c_vec = "1.2.1"
+libc = "0.2"
+
+[dev-dependencies]
+lodepng = "1.1.1"

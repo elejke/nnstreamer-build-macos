@@ -1,0 +1,143 @@
+stages:
+  - build
+  - analysis
+  - docs
+  - deploy
+
+# Common variables
+variables:
+  COMMON_MESON_FLAGS: "--fatal-meson-warnings --werror"
+  MESON_TEST_TIMEOUT_MULTIPLIER: 2
+  FEDORA_IMAGE: registry.gitlab.gnome.org/gnome/pango/fedora:v5
+
+.only-default:
+  only:
+    - branches
+  except:
+    - tags
+
+linux-fedora:
+  extends: .only-default
+  image: $FEDORA_IMAGE
+  stage: build
+  needs: []
+  variables:
+    EXTRA_MESON_FLAGS: "--buildtype=debug --default-library=both"
+  script:
+    - meson ${COMMON_MESON_FLAGS} ${EXTRA_MESON_FLAGS}
+            _build
+    - meson _build
+    - ninja -C _build
+    - .gitlab-ci/run-tests.sh _build
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - "${CI_PROJECT_DIR}/_build/report.xml"
+    name: "gtk-${CI_COMMIT_REF_NAME}"
+    paths:
+      - "${CI_PROJECT_DIR}/_build/meson-logs"
+      - "${CI_PROJECT_DIR}/_build/report.xml"
+      - "${CI_PROJECT_DIR}/_build/hello.png"
+      - "${CI_PROJECT_DIR}/_build/fontlist.txt"
+
+asan-build:
+  extends: .only-default
+  image: $FEDORA_IMAGE
+  tags: [ asan ]
+  stage: analysis
+  needs: []
+  variables:
+  script:
+    - CC=clang meson --buildtype=debugoptimized -Db_sanitize=address -Db_lundef=false -Dintrospection=disabled _build
+    - ninja -C _build
+    - .gitlab-ci/run-tests.sh _build
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - "${CI_PROJECT_DIR}/_build/report.xml"
+    name: "gtk-${CI_COMMIT_REF_NAME}"
+    paths:
+      - "${CI_PROJECT_DIR}/_build/meson-logs"
+      - "${CI_PROJECT_DIR}/_build/report.xml"
+      - "${CI_PROJECT_DIR}/_build/hello.png"
+      - "${CI_PROJECT_DIR}/_build/fontlist.txt"
+
+msys2-mingw64:
+  extends: .only-default
+  stage: build
+  needs: []
+  tags:
+    - win32-ps
+  variables:
+    MSYSTEM: "MINGW64"
+    CHERE_INVOKING: "yes"
+  script:
+    - C:\msys64\usr\bin\pacman --noconfirm -Syyuu
+    - C:\msys64\usr\bin\bash -lc "bash -x ./.gitlab-ci/test-msys2.sh"
+    - C:\msys64\usr\bin\bash -lc "bash -x ./.gitlab-ci/render-msys2.sh"
+    - C:\msys64\usr\bin\bash -lc "bash -x ./.gitlab-ci/list-msys2.sh"
+  artifacts:
+    name: "${env:CI_JOB_NAME}-${env:CI_COMMIT_REF_NAME}"
+    when: always
+    paths:
+      - "${CI_PROJECT_DIR}/_build/meson-logs"
+      - "${CI_PROJECT_DIR}/_build/hello.png"
+      - "${CI_PROJECT_DIR}/_build/fontlist.txt"
+
+macos:
+  extends: .only-default
+  only:
+    - branches@GNOME/pango
+  stage: build
+  tags:
+    - macos
+  needs: []
+  before_script:
+    - pip3 install --user meson==0.56
+    - pip3 install --user ninja
+  script:
+    - meson -Dintrospection=disabled
+            -Dcpp_std=c++11
+            -Dpixman:tests=disabled
+            _build
+    - ninja -C _build
+    - .gitlab-ci/run-tests.sh _build
+  artifacts:
+    when: always
+    paths:
+      - "${CI_PROJECT_DIR}/_build/meson-logs"
+      - "${CI_PROJECT_DIR}/_build/hello.png"
+      - "${CI_PROJECT_DIR}/_build/fontlist.txt"
+
+reference:
+  image: $FEDORA_IMAGE
+  stage: docs
+  needs: []
+  variables:
+    EXTRA_MESON_FLAGS: ""
+  script:
+    - meson ${COMMON_MESON_FLAGS} ${EXTRA_MESON_FLAGS} -Dgtk_doc=true _build
+    - ninja -C _build
+    - mkdir -p _reference/
+    - mv _build/docs/Pango/ _reference/
+    - mv _build/docs/PangoCairo/ _reference/
+    - mv _build/docs/PangoFc/ _reference/
+    - mv _build/docs/PangoFT2/ _reference/
+    - mv _build/docs/PangoOT/ _reference/
+    - mv _build/docs/PangoXft/ _reference/
+  artifacts:
+    paths:
+      - _reference
+
+pages:
+  stage: deploy
+  needs: ['reference']
+  script:
+    - mv _reference/ public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - master

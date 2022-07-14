@@ -1,0 +1,46 @@
+# Optionally disable the GTK application in case you're building the
+# sysprof-cli only for your platform. Might be useful in IoT or various
+# server scenarios.
+option('enable_gtk', type: 'boolean')
+
+# Disable libsysprof/ui (in situations you only want sysprof-capture)
+option('libsysprof', type: 'boolean')
+
+# Optionally compile sysprofd, which is needed to get elevated privileges.
+# You only really want to ignore this if you are running from a container
+# and are talking to a host daemon. Also, if you're compiling for something
+# other than Linux to allow viewing syscap files.
+option('with_sysprofd', type: 'combo',
+  choices: ['host', 'bundled', 'none'],
+  value: 'bundled',
+)
+
+# The directory to place systemd service files, so that we can auto-launch
+# sysprofd as necessary (for the daemon privilege helper).
+option('systemdunitdir', type: 'string',
+  description: 'Directory for systemd service files'
+)
+
+# An optional location to specify where to locate debug information. This
+# is useful for distributions to set based on their debuginfo setup.
+option('debugdir', type: 'string',
+  description: 'Look for global separate debug info in this path'
+)
+
+# If Yelp documentation should be installed
+option('help', type: 'boolean')
+
+# Disable use of libunwind
+option('libunwind', type: 'boolean')
+
+# Optionally disable the tools (this is mostly only useful for building only
+# libsysprof-capture as a subproject)
+option('enable_tools', type: 'boolean')
+
+# Optionally disable the tests (this is mostly only useful for building only
+# libsysprof-capture as a subproject)
+option('enable_tests', type: 'boolean')
+
+# Optionally disable the examples (this is mostly only useful for building only
+# libsysprof-capture as a subproject)
+option('enable_examples', type: 'boolean')

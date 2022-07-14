@@ -1,0 +1,14 @@
+[binaries]
+c = ['gcc', '-m32']
+cpp = ['g++', '-m32']
+ar = 'gcc-ar'
+strip = 'strip'
+
+[properties]
+needs_exe_wrapper = false
+
+[host_machine]
+system = 'linux'
+cpu_family = 'x86'
+cpu = 'i686'
+endian = 'little'

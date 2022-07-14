@@ -1,0 +1,6 @@
+LIBAVRESAMPLE_@majorver@ {
+    global:
+        av*;
+    local:
+        *;
+};

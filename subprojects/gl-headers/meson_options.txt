@@ -1,0 +1,2 @@
+option('glext', type : 'feature', value : 'auto', description : 'Install and use the GL/glext.h header')
+option('wglext', type : 'feature', value : 'auto', description : 'Install and use the GL/wglext.h header')

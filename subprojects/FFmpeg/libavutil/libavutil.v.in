@@ -1,0 +1,6 @@
+LIBAVUTIL_@majorver@ {
+    global:
+        av*;
+    local:
+        *;
+};

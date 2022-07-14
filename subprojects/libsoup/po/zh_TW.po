@@ -1,0 +1,204 @@
+# Chinese (Taiwan) translation for libsoup.
+# Copyright (C) 2012 libsoup's COPYRIGHT HOLDER
+# This file is distributed under the same license as the libsoup package.
+#
+# pan93412 <pan93412@gmail.com>, 2019.
+msgid ""
+msgstr ""
+"Project-Id-Version: libsoup master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libsoup/issues\n"
+"POT-Creation-Date: 2020-09-17 06:36+0000\n"
+"PO-Revision-Date: 2020-09-22 23:09+0800\n"
+"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
+"Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: libsoup/soup-body-input-stream.c:139 libsoup/soup-body-input-stream.c:170
+#: libsoup/soup-body-input-stream.c:203 libsoup/soup-message-io.c:244
+msgid "Connection terminated unexpectedly"
+msgstr "連線無預警的關閉了"
+
+#: libsoup/soup-body-input-stream.c:459
+msgid "Invalid seek request"
+msgstr "無效的搜尋要求"
+
+#: libsoup/soup-body-input-stream.c:487
+msgid "Cannot truncate SoupBodyInputStream"
+msgstr "不能截短 SoupBodyInputStream"
+
+#: libsoup/soup-cache-input-stream.c:76
+msgid "Network stream unexpectedly closed"
+msgstr "網路串流無預警的關閉了"
+
+#: libsoup/soup-cache-input-stream.c:291
+msgid "Failed to completely cache the resource"
+msgstr "無法完整快取資源"
+
+#: libsoup/soup-directory-input-stream.c:231
+msgid "Name"
+msgstr "名稱"
+
+#: libsoup/soup-directory-input-stream.c:232
+msgid "Size"
+msgstr "大小"
+
+#: libsoup/soup-directory-input-stream.c:233
+msgid "Date Modified"
+msgstr "修改日期"
+
+#: libsoup/soup-converter-wrapper.c:189
+#, c-format
+msgid "Output buffer is too small"
+msgstr "輸出緩衝區太小"
+
+#: libsoup/soup-message-client-io.c:39
+msgid "Could not parse HTTP response"
+msgstr "無法解析 HTTP 回應"
+
+#: libsoup/soup-message-client-io.c:62
+msgid "Unrecognized HTTP response encoding"
+msgstr "未辨識的 HTTP 回應編碼"
+
+#: libsoup/soup-message-io.c:269
+msgid "Header too big"
+msgstr "標頭太大"
+
+#: libsoup/soup-message-io.c:401 libsoup/soup-message-io.c:1024
+msgid "Operation would block"
+msgstr "操作會阻擋"
+
+#: libsoup/soup-message-io.c:976 libsoup/soup-message-io.c:1009
+msgid "Operation was cancelled"
+msgstr "操作已被取消"
+
+#: libsoup/soup-message-server-io.c:63
+msgid "Could not parse HTTP request"
+msgstr "無法解析 HTTP 要求"
+
+#: libsoup/soup-request.c:141
+#, c-format
+msgid "No URI provided"
+msgstr "未提供 URI"
+
+#: libsoup/soup-request.c:151
+#, c-format
+msgid "Invalid “%s” URI: %s"
+msgstr "無效的「%s」URI：%s"
+
+#: libsoup/soup-server.c:1810
+msgid "Can’t create a TLS server without a TLS certificate"
+msgstr "沒有 TLS 憑證不能建立 TLS 伺服器"
+
+#: libsoup/soup-server.c:1827
+#, c-format
+msgid "Could not listen on address %s, port %d: "
+msgstr "無法聽取位址 %s，連接埠 %d："
+
+#: libsoup/soup-session.c:4585
+#, c-format
+msgid "Could not parse URI “%s”"
+msgstr "無法解析 URI「%s」"
+
+#: libsoup/soup-session.c:4622
+#, c-format
+msgid "Unsupported URI scheme “%s”"
+msgstr "不支援的 URI scheme「%s」"
+
+#: libsoup/soup-session.c:4644
+#, c-format
+msgid "Not an HTTP URI"
+msgstr "並非 HTTP URI"
+
+#: libsoup/soup-session.c:4855
+msgid "The server did not accept the WebSocket handshake."
+msgstr "伺服器不接受 WebSocket 交握。"
+
+#: libsoup/soup-socket.c:148
+msgid "Can’t import non-socket as SoupSocket"
+msgstr "不能匯入非-socket 做為 SoupSocket"
+
+#: libsoup/soup-socket.c:166
+msgid "Could not import existing socket: "
+msgstr "無法匯入現有的 socket："
+
+#: libsoup/soup-socket.c:175
+msgid "Can’t import unconnected socket"
+msgstr "不能匯入未連線的 socket"
+
+#: libsoup/soup-websocket.c:479 libsoup/soup-websocket.c:523
+#: libsoup/soup-websocket.c:539
+msgid "Server requested unsupported extension"
+msgstr "伺服器要求不支援的擴充功能"
+
+#: libsoup/soup-websocket.c:502 libsoup/soup-websocket.c:694
+#, c-format
+msgid "Incorrect WebSocket “%s” header"
+msgstr "無效的 WebSocket「%s」標頭"
+
+#: libsoup/soup-websocket.c:503 libsoup/soup-websocket.c:1024
+#, c-format
+msgid "Server returned incorrect “%s” key"
+msgstr "伺服器傳回不正確的「%s」金鑰"
+
+#: libsoup/soup-websocket.c:566
+#, c-format
+msgid "Duplicated parameter in “%s” WebSocket extension header"
+msgstr "「%s」WebSocket 擴充元件標頭有重複參數"
+
+#: libsoup/soup-websocket.c:567
+#, c-format
+msgid "Server returned a duplicated parameter in “%s” WebSocket extension header"
+msgstr "伺服器在「%s」WebSocket 擴充元件標頭回傳了重複參數"
+
+#: libsoup/soup-websocket.c:658 libsoup/soup-websocket.c:667
+msgid "WebSocket handshake expected"
+msgstr "預期有 WebSocket 交握"
+
+#: libsoup/soup-websocket.c:675
+msgid "Unsupported WebSocket version"
+msgstr "不支援的 WebSocket 版本"
+
+#: libsoup/soup-websocket.c:684
+msgid "Invalid WebSocket key"
+msgstr "無效的 WebSocket 金鑰是"
+
+#: libsoup/soup-websocket.c:703
+msgid "Unsupported WebSocket subprotocol"
+msgstr "不支援的 WebSocket 子協定"
+
+#: libsoup/soup-websocket.c:975
+msgid "Server rejected WebSocket handshake"
+msgstr "伺服器拒絕 WebSocket 交握"
+
+#: libsoup/soup-websocket.c:983 libsoup/soup-websocket.c:992
+msgid "Server ignored WebSocket handshake"
+msgstr "伺服器忽略 WebSocket 交握"
+
+#: libsoup/soup-websocket.c:1004
+msgid "Server requested unsupported protocol"
+msgstr "伺服器要求不支援的網路通訊協定"
+
+#: libsoup/soup-tld.c:150
+msgid "No public-suffix list available."
+msgstr "沒有可使用的公開後置字元列表。"
+
+#: libsoup/soup-tld.c:160 libsoup/soup-tld.c:176
+msgid "Invalid hostname"
+msgstr "主機名稱無效"
+
+#: libsoup/soup-tld.c:167
+msgid "Hostname is an IP address"
+msgstr "主機名稱是 IP 位址"
+
+#: libsoup/soup-tld.c:188
+msgid "Hostname has no base domain"
+msgstr "主機名稱沒有基礎網域"
+
+#: libsoup/soup-tld.c:196
+msgid "Not enough domains"
+msgstr "沒有足夠的網域"

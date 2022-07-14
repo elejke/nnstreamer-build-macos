@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.gnome.Sysprof3.desktop</id>
+  <translation type="gettext">sysprof</translation>
+  <name>Sysprof</name>
+  <summary>Profile an application or entire system</summary>
+  <project_license>GPL-3.0+</project_license>
+  <project_group>GNOME</project_group>
+  <developer_name>The GNOME Foundation</developer_name>
+
+  <description>
+    <p>Sysprof allows you to profile applications to aid in debugging and optimization.</p>
+  </description>
+
+  <url type="homepage">https://wiki.gnome.org/Apps/Sysprof</url>
+  <url type="bugtracker">https://gitlab.gnome.org/GNOME/sysprof/issues</url>
+  <url type="donation">https://www.gnome.org/friends</url>
+
+  <screenshots>
+    <screenshot type="default">
+      <image>https://git.gnome.org/browse/sysprof/plain/data/screenshots/sysprof-main-window.png</image>
+    </screenshot>
+  </screenshots>
+
+  <kudos>
+    <kudo>AppMenu</kudo>
+    <kudo>HiDpiIcon</kudo>
+    <kudo>ModernToolkit</kudo>
+    <kudo>UserDocs</kudo>
+  </kudos>
+
+  <provides>
+    <binary>sysprof</binary>
+    <binary>sysprof-cli</binary>
+    <dbus type="system">org.gnome.Sysprof2</dbus>
+    <dbus type="system">org.gnome.Sysprof3</dbus>
+  </provides>
+
+  <releases>
+    <release version="3.34.0" date="2019-09-09"/>
+  </releases>
+
+  <metadata_license>CC0-1.0</metadata_license>
+  <update_contact>chergert_AT_redhat.com</update_contact>
+</component>

@@ -1,0 +1,9 @@
+*~
+*#
+.#*
+.vscode
+.lock
+
+# Common Meson builddirs
+_build/
+build/

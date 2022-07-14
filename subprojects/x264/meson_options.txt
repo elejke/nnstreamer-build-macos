@@ -1,0 +1,53 @@
+# FIXME: the following are 'auto' options!
+# thread="auto"
+# vsx="auto"
+
+# Configuration options
+
+option('cli', type: 'boolean', value: true,
+       description: 'Build x264 command line application')
+
+option('opencl', type: 'boolean', value: false, # FIXME: true by default
+       description: 'Enable OpenCL features')
+
+option('gpl', type: 'boolean', value: true,
+       description: 'Enable GPL-only features')
+
+option('thread', type: 'boolean', value: true,
+       description: 'Enable multithreaded encoding')
+
+#  --disable-win32thread    disable win32threads (windows only)
+
+option('interlaced', type: 'boolean', value: true,
+       description: 'Enable interlaced encoding support')
+
+option('bit-depth', type: 'combo', choices: ['8', '10', 'all'], value: 'all',
+       description: 'Supported output bit depth(s)')
+
+option('chroma-format', type: 'combo', choices: ['400', '420', '422', '444', 'all'], value: 'all',
+       description: 'Supported output chroma format(s)')
+
+# Advanced options
+
+option('asm', type: 'feature', value: 'auto',
+       description: 'Enable platform-specific assembly optimizations')
+
+# External library support for command line utility
+
+option('avs', type: 'feature', value: 'disabled',
+       description: 'cli avisynth support')
+
+option('swscale', type: 'feature', value: 'disabled',
+       description: 'cli swscale support')
+
+option('lavf', type: 'feature', value: 'disabled',
+       description: 'cli libavformat support')
+
+option('ffms', type: 'feature', value: 'disabled',
+       description: 'cli ffmpegsource support')
+
+option('gpac', type: 'feature', value: 'disabled',
+       description: 'cli gpac support')
+
+option('lsmash', type: 'feature', value: 'disabled',
+       description: 'cli lsmash support')
