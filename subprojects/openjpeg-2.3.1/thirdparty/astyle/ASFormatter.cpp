@@ -4316,7 +4316,7 @@ void ASFormatter::padParens()
 					             && prevWord.compare(prevWord.length() - 2, 2, "_t") == 0)
 					         || prevWord == "Int32"
 					         || prevWord == "UInt32"
-					         || prevWord == "Int64"
+					         || prevWord == "uint64_t"
 					         || prevWord == "UInt64"
 					         || prevWord == "BOOL"
 					         || prevWord == "DWORD"
