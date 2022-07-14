@@ -17,6 +17,6 @@ jobs:
       - name: Install deps
         run: pip install meson ninja
       - name: Configure
-        run: meson build && chmod 777 /Users/runner/work/nnstreamer-build/nnstreamer-build/build/subprojects/macos-bison-binary/bison.py
+        run: meson build && chmod 777 /Users/runner/work/nnstreamer-build-macos/nnstreamer-build-macos/build/subprojects/macos-bison-binary/bison.py
       - name: Build
         run: ninja -C build
