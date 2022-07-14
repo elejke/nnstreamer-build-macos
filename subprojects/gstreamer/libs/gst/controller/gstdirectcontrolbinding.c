@@ -127,7 +127,7 @@ DEFINE_CONVERT (int, Int, INT, rint);
 DEFINE_CONVERT (uint, UInt, UINT, rint);
 DEFINE_CONVERT (long, Long, LONG, rint);
 DEFINE_CONVERT (ulong, ULong, ULONG, rint);
-DEFINE_CONVERT (int64, uint64_t, INT64, rint);
+DEFINE_CONVERT (int64, Int64, INT64, rint);
 DEFINE_CONVERT (uint64, UInt64, UINT64, rint);
 DEFINE_CONVERT (float, Float, FLOAT, /*NOOP*/);
 DEFINE_CONVERT (double, Double, DOUBLE, /*NOOP*/);
