@@ -549,14 +549,14 @@ TFLiteInterpreter::loadModel (int num_threads, tflite_delegate_e delegate_e)
   delegate = getDelegate ();
   if (delegate != nullptr) {
     if (interpreter->ModifyGraphWithDelegate (delegate) != kTfLiteOk) {
-      ml_loge ("Failed to apply delegate\n");
+      ml_loge ("Failed to allocate tensors with delegate\n");
       return -2;
     }
-  }
-
-  if (interpreter->AllocateTensors () != kTfLiteOk) {
-    ml_loge ("Failed to allocate tensors\n");
-    return -2;
+  } else {
+    if (interpreter->AllocateTensors () != kTfLiteOk) {
+      ml_loge ("Failed to allocate tensors\n");
+      return -2;
+    }
   }
 
 #if (DBG)
@@ -1311,7 +1311,7 @@ tflite_parseCustomOption (const GstTensorFilterProperties *prop, tflite_option_s
           }
           g_strfreev (kvpairs);
         } else {
-          ml_logw ("Unknown option (%s).", strv[i]);
+          g_warning ("Unknown option (%s).", strv[i]);
         }
       }
 
@@ -1323,7 +1323,7 @@ tflite_parseCustomOption (const GstTensorFilterProperties *prop, tflite_option_s
 
   if (option->delegate == TFLITE_DELEGATE_EXTERNAL
       && option->ext_delegate_path == NULL) {
-    ml_logw ("No shared lib for external delegate.");
+    g_warning ("No shared lib for external delegate.");
     option->delegate = TFLITE_DELEGATE_NONE;
   }
 

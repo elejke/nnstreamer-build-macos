@@ -7454,7 +7454,6 @@ TEST (testTensorCrop, infoDelayed_n)
  * @brief Macro to test sparse tensor conversion for each data type.
  */
 #define RUN_SPARSE_CONVERT_TEST(ttype,dtype) do {\
-    failed = false;\
     const gint sparse_test_data[40] = {\
       0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,\
       0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,\
@@ -7482,7 +7481,7 @@ TEST (testTensorCrop, infoDelayed_n)
     EXPECT_TRUE (dense != NULL);\
     ASSERT_TRUE (gst_memory_map (dense, &map, GST_MAP_READ));\
     for (i = 0; i < 40U; i++)\
-      if (((dtype *) data)[i] != ((dtype *) map.data)[i]) failed = true;\
+      EXPECT_TRUE (((dtype *) data)[i] == ((dtype *) map.data)[i]);\
     gst_memory_unmap (dense, &map);\
     gst_tensor_info_free (&info);\
     gst_memory_unref (sparse);\
@@ -7495,27 +7494,16 @@ TEST (testTensorCrop, infoDelayed_n)
  */
 TEST (testTensorSparse, utilConvert)
 {
-  gboolean failed;
   RUN_SPARSE_CONVERT_TEST (_NNS_INT32, int32_t);
-  EXPECT_FALSE (failed);
   RUN_SPARSE_CONVERT_TEST (_NNS_UINT32, uint32_t);
-  EXPECT_FALSE (failed);
   RUN_SPARSE_CONVERT_TEST (_NNS_INT16, int16_t);
-  EXPECT_FALSE (failed);
   RUN_SPARSE_CONVERT_TEST (_NNS_UINT16, uint16_t);
-  EXPECT_FALSE (failed);
   RUN_SPARSE_CONVERT_TEST (_NNS_INT8, int8_t);
-  EXPECT_FALSE (failed);
   RUN_SPARSE_CONVERT_TEST (_NNS_UINT8, uint8_t);
-  EXPECT_FALSE (failed);
   RUN_SPARSE_CONVERT_TEST (_NNS_INT64, int64_t);
-  EXPECT_FALSE (failed);
   RUN_SPARSE_CONVERT_TEST (_NNS_UINT64, uint64_t);
-  EXPECT_FALSE (failed);
   RUN_SPARSE_CONVERT_TEST (_NNS_FLOAT64, double);
-  EXPECT_FALSE (failed);
   RUN_SPARSE_CONVERT_TEST (_NNS_FLOAT32, float);
-  EXPECT_FALSE (failed);
 }
 
 /**

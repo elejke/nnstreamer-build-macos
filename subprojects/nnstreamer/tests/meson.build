@@ -34,7 +34,7 @@ endif
 # gtest
 gtest_dep = dependency('gtest', required: false)
 if gtest_dep.found()
-  lesser_code_quality_accepted_for_unittest_code = declare_dependency(compile_args: ['-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-maybe-uninitialized'])
+  lesser_code_quality_accepted_for_unittest_code = declare_dependency(compile_args: ['-Wno-unused-parameter', '-Wno-missing-field-initializers'])
 
   # Shared library of internal APIs for nnstreamer-gtest
   unittest_util_shared = shared_library('nnstreamer_unittest_util',
@@ -52,6 +52,7 @@ if gtest_dep.found()
 
   nnstreamer_unittest_deps = [
     unittest_util_dep,
+    nnstreamer_internal_deps,
     glib_dep,
     gst_dep,
     gst_app_dep,
@@ -85,7 +86,7 @@ if gtest_dep.found()
     # Run unittest_plugins
     unittest_plugins = executable('unittest_plugins',
       join_paths('nnstreamer_plugins', 'unittest_plugins.cc'),
-      dependencies: [nnstreamer_unittest_deps, nnstreamer_internal_deps],
+      dependencies: [nnstreamer_unittest_deps],
       install: get_option('install-test'),
       install_dir: unittest_install_dir
     )
@@ -146,7 +147,7 @@ if gtest_dep.found()
     if mqtt_support_is_available
       unittest_mqtt_w_helper = executable('unittest_mqtt_w_helper',
           join_paths('gstreamer_mqtt', 'unittest_mqtt_w_helper.cc'),
-          dependencies: [gstmqtt_dep, nnstreamer_unittest_deps],
+          dependencies: [gstmqtt_mocking_dep, nnstreamer_unittest_deps],
           install: get_option('install-test'),
           install_dir: unittest_install_dir)
 
@@ -159,18 +160,6 @@ if gtest_dep.found()
           install_dir: unittest_install_dir)
 
       test('unittest_mqtt', unittest_mqtt, env: testenv)
-
-      # ntp util test
-      gmock_dep = dependency('gmock', required: false)
-      if get_option('enable-tizen') and gmock_dep.found()
-        gstreamer_ntp_util_mock = executable('unittest_ntp_util',
-            join_paths('gstreamer_mqtt', 'unittest_ntp_util_mock.cc'),
-            dependencies: [nnstreamer_unittest_deps, gmock_dep, gstmqtt_dep],
-            install: get_option('install-test'),
-            install_dir: unittest_install_dir)
-
-        test('gstreamer_ntp_util_mock', gstreamer_ntp_util_mock, env: testenv)
-      endif
     endif
 
     # Run unittest_src_iio
@@ -186,7 +175,7 @@ if gtest_dep.found()
     endif
 
     # Run unittest_converter
-    if flatbuf_support_is_available and have_python3
+    if flatbuf_support_is_available
       unittest_converter = executable('unittest_converter',
         join_paths('nnstreamer_converter', 'unittest_converter.cc'),
         dependencies: [nnstreamer_unittest_deps, flatbuf_dep, nnstreamer_python3_helper_dep],
@@ -302,10 +291,6 @@ if gtest_dep.found()
   if get_option('enable-openvino')
     subdir('nnstreamer_filter_openvino')
   endif
-
-  if mxnet_support_is_available
-    subdir('nnstreamer_filter_mxnet')
-  endif
 endif # gtest_dep.found()
 
 tensor_filter_ext_enabled = tflite_support_is_available or \
@@ -314,8 +299,7 @@ tensor_filter_ext_enabled = tflite_support_is_available or \
     have_python3 or \
     pytorch_support_is_available or caffe2_support_is_available or \
     nnfw_runtime_support_is_available or get_option('enable-edgetpu') or \
-    mvncsdk2_support_is_available or get_option('enable-openvino') or \
-    mxnet_support_is_available
+    mvncsdk2_support_is_available or get_option('enable-openvino')
 if get_option('install-test') and tensor_filter_ext_enabled
   install_subdir('test_models', install_dir: unittest_install_dir)
 endif
@@ -357,18 +341,12 @@ if get_option('install-test')
   if caffe2_support_is_available
     install_subdir('nnstreamer_filter_caffe2', install_dir: unittest_install_dir)
   endif
-  if deepview_rt_support_is_available
-    install_subdir('nnstreamer_filter_deepview_rt', install_dir: unittest_install_dir)
-  endif
   if flatbuf_support_is_available
     install_subdir('nnstreamer_flatbuf', install_dir: unittest_install_dir)
     install_subdir('nnstreamer_flexbuf', install_dir: unittest_install_dir)
   endif
   if protobuf_support_is_available
     install_subdir('nnstreamer_protobuf', install_dir: unittest_install_dir)
-  endif
-  if mxnet_support_is_available
-    install_subdir('unittest_filter_mxnet', install_dir: unittest_install_dir)
   endif
   install_subdir('nnstreamer_mux', install_dir: unittest_install_dir)
   install_subdir('nnstreamer_rate', install_dir: unittest_install_dir)

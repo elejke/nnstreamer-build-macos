@@ -6,7 +6,7 @@ project('nnstreamer', 'c', 'cpp',
   license: ['LGPL-2.1'],
   meson_version: '>=0.50.0',
   default_options: [
-    'werror=false',
+    'werror=true',
     'warning_level=2',
     'c_std=gnu89',
     'cpp_std=c++14'
@@ -106,6 +106,7 @@ filter_subplugin_install_dir = join_paths(subplugin_install_prefix, 'filters')
 decoder_subplugin_install_dir = join_paths(subplugin_install_prefix, 'decoders')
 customfilter_install_dir = join_paths(subplugin_install_prefix, 'customfilters')
 converter_subplugin_install_dir = join_paths(subplugin_install_prefix, 'converters')
+extra_install_dir = join_paths(subplugin_install_prefix, 'extra')
 unittest_base_dir = join_paths(nnstreamer_bindir, 'unittest-nnstreamer')
 
 # Set default configuration
@@ -157,9 +158,7 @@ flatc = find_program('flatc', required : get_option('flatbuf-support'))
 flatbuf_dep = disabler()
 flatbuf_version_check_dep = disabler()
 if flatc.found()
-  # TODO: After bumping up meson version to 0.62.0, we can use flatc.version()
-  # Please refer https://mesonbuild.com/Reference-manual_returned_external_program.html#external_programversion
-  flatc_ver = run_command(flatc, '--version', check : true).stdout().split()[2]
+  flatc_ver = run_command(flatc, '--version').stdout().split()[2]
   flatbuf_dep = dependency('flatbuffers', version: flatc_ver,
       required : get_option('flatbuf-support'))
   flatbuf_version_check_dep = dependency('flatbuffers', version: '>=2.0.0',
@@ -193,13 +192,11 @@ if not get_option('snpe-support').disabled()
       message('Not Supported System & Architecture. Linux x86_64 is required for snpe sub-plugin')
     else
       # Check whether $SNPE_ROOT (where SNPE SDK is located) is set.
-      cmd = run_command('sh', '-c', 'echo $SNPE_ROOT', check : true)
+      cmd = run_command('sh', '-c', 'echo $SNPE_ROOT')
       SNPE_ROOT = cmd.stdout().strip()
       if SNPE_ROOT != ''
         message('Got $SNPE_ROOT: @0@'.format(SNPE_ROOT))
-        # TODO: This is not a portable way to check if a directory exists
-        # After bumping up to 0.53.0, the following line can be replaced with one that uses FS module
-        snpe_dir_not_exist = run_command('[', '-d', SNPE_ROOT, ']', check : false).returncode()
+        snpe_dir_not_exist = run_command('[', '-d', SNPE_ROOT, ']').returncode()
         if snpe_dir_not_exist != 0
           error('@0@ does not exists'.format(SNPE_ROOT))
         endif
@@ -298,16 +295,6 @@ if not get_option('armnn-support').disabled()
   endif
 endif
 
-# mxnet
-if not get_option('mxnet-support').disabled()
-  mxnet_dep = cxx.find_library('mxnet', required: false)
-  if not mxnet_dep.found()
-    if cxx.check_header('mxnet-cpp/MxNetCpp.h', required: get_option('mxnet-support'))
-      mxnet_dep = declare_dependency(link_args: ['-lmxnet'])
-    endif
-  endif
-endif
-
 # features registration to be controlled
 #
 # register feature as follows
@@ -401,13 +388,6 @@ features = {
   'trix-engine-support': {
     'target': 'npu-engine',
     'project_args': { 'ENABLE_TRIX_ENGINE' : 1 }
-  },
-  'aitt-support': {
-    'target': 'aitt',
-    'project_args': { 'ENABLE_AITT' : 1 }
-  },
-  'mxnet-support': {
-    'extra_deps': [ mxnet_dep ]
   }
 }
 
@@ -475,9 +455,6 @@ foreach name, value: project_args
   add_project_arguments('-D@0@=@1@'.format(name, value), language: ['c', 'cpp'])
 endforeach
 
-add_project_arguments('-DDEBUG', language : ['c','cpp'])
-
-
 # Add redundant declaration flag when caffe2 and pytorch both are disabled
 if not (pytorch_support_is_available or caffe2_support_is_available)
   redundant_decls_flag = '-Wredundant-decls'
@@ -503,12 +480,9 @@ if not get_option('python3-support').disabled()
     pg_pkgconfig = find_program('pkg-config')
 
     python3_inc_args = []
-    python3_inc_args += run_command(pg_pkgconfig, ['python3', '--cflags'], check : true).stdout().strip().split()
-    python3_inc_args += run_command('python3', ['-c', 'import site\nfor i in site.getsitepackages(): print("-I" + i + "/numpy/core/include")'], check : true).stdout().strip().split()
-    r = run_command('python3', ['-m', 'site', '--user-site'], check : false)
-    if r.returncode() == 0
-      python3_inc_args += '-I' + r.stdout().strip() + '/numpy/core/include'
-    endif
+    python3_inc_args += run_command(pg_pkgconfig, ['python3', '--cflags']).stdout().strip().split()
+    python3_inc_args += run_command('python3', ['-c', 'import site\nfor i in site.getsitepackages(): print("-I" + i + "/numpy/core/include")']).stdout().strip().split()
+    python3_inc_args += '-I' + run_command('python3', ['-m', 'site', '--user-site']).stdout().strip() + '/numpy/core/include'
     python3_inc_valid_args = []
 
     foreach python3_inc_arg : python3_inc_args
@@ -594,7 +568,7 @@ configure_file(input: 'nnstreamer-internal.pc.in', output: 'nnstreamer-internal.
 )
 
 # Check whether mqtt broker is running or not.
-check_mosquitto = run_command ('bash', './tests/check_broker.sh', check : true).stdout()
+check_mosquitto = run_command ('bash', './tests/check_broker.sh').stdout()
 if check_mosquitto != ''
   add_project_arguments('-D__MQTT_BROKER_ENABLED__=1', language: ['c', 'cpp'])
 endif

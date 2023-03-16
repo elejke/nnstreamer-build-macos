@@ -1,0 +1,7 @@
+# This is a comment.
+# Each line is a file pattern followed by one or more owners.
+# For more details, visit https://help.github.com/articles/about-codeowners/
+# The lists of people and groups are for github.com
+
+# Until we define maintainers/committers per subdirectory, all committers (reviewers) are supposed to review any parts.
+* @nnstreamer/nnstreamer @myungjoo @jijoongmoon @again4you @jaeyun-jung @leemgs @wooksong @helloahn @kparichay @gichan-jang @anyj0527 @lhs8928 @songgot @jihochu @niley7464

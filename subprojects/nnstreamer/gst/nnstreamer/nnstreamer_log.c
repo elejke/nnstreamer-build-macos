@@ -8,9 +8,7 @@
  * @bug		No known bugs except for NYI items
  */
 
-
-
-#if !defined(__ANDROID__) && !defined(__CYGWIN__)
+#ifndef __ANDROID__
 /* Android does not have execinfo.h. It has unwind.h instead. */
 #include <execinfo.h>
 #endif
@@ -31,12 +29,11 @@ char *
 _backtrace_to_string (void)
 {
   char *retstr = NULL;
-
-#if !defined(__ANDROID__) && !defined(__CYGWIN__)
+#ifndef __ANDROID__
 /* Android does not have execinfo.h. It has unwind.h instead. */
   void *array[20];
   char **strings;
-  int size, i, len;
+  int size, i;
   int strsize = 0, strcursor = 0;
 
   size = backtrace (array, 20);
@@ -46,20 +43,17 @@ _backtrace_to_string (void)
       strsize += strlen (strings[i]);
 
     retstr = malloc (sizeof (char) * (strsize + 1));
-    if (retstr) {
-      for (i = 0; i < size; i++) {
-        len = strlen (strings[i]);
-        memcpy (retstr + strcursor, strings[i], len);
-        strcursor += len;
-      }
-
-      retstr[strsize] = '\0';
+    for (i = 0; i < size; i++) {
+      int len = strlen (strings[i]);
+      memcpy (retstr + strcursor, strings[i], len);
+      strcursor += len;
     }
-
-    free (strings);
+    retstr[strsize] = '\0';
   }
+
+  free (strings);
 #else
-  retstr = strdup ("WIN-nnstreamer does not support backtrace.\n");
+  retstr = strdup ("Android-nnstreamer does not support backtrace.\n");
 #endif
 
   return retstr;

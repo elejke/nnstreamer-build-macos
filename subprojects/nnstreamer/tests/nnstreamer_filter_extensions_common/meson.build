@@ -3,7 +3,9 @@ if not gtest_dep.found()
 endif
 
 tizen_apptest_deps = [
-  nnstreamer_unittest_deps
+  unittest_util_dep,
+  gtest_dep,
+  glib_dep
 ]
 
 # Format for adding subplugin into extensions -
@@ -46,10 +48,6 @@ if have_python3
 endif
 
 sed_command = find_program('sed', required: true)
-sed_command_edit_in_place_option = '-i'
-if build_platform == 'macos'
-  sed_command_edit_in_place_option = '-i .bak'
-endif
 ext_test_template_prefix = 'unittest_tizen_'
 ext_test_template_str = ext_test_template_prefix + 'template.cc.in'
 ext_test_template = files (ext_test_template_str)
@@ -74,9 +72,9 @@ foreach ext : extensions
     input : ext_test_template,
     output : ext_test_path_each,
     command : [copy, '-f', '@INPUT@', '@OUTPUT@', \
-      '&&', 'sed', sed_command_edit_in_place_option, sed_ext_name_option, '@OUTPUT@', \
-      '&&', 'sed', sed_command_edit_in_place_option, sed_ext_abbrv_option, '@OUTPUT@', \
-      '&&', 'sed', sed_command_edit_in_place_option, sed_ext_mf_option, '@OUTPUT@']
+      '&&', 'sed', '-i', sed_ext_name_option, '@OUTPUT@', \
+      '&&', 'sed', '-i', sed_ext_abbrv_option, '@OUTPUT@', \
+      '&&', 'sed', '-i', sed_ext_mf_option, '@OUTPUT@']
   )
 
   exec = executable(

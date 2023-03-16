@@ -816,7 +816,7 @@ mkdir -p build
 
 meson --buildtype=plain --prefix=%{_prefix} --sysconfdir=%{_sysconfdir} --libdir=%{_lib} \
 	--bindir=%{nnstbindir} --includedir=include -Dsubplugindir=%{_prefix}/lib/nnstreamer \
-	%{enable_tizen} %{element_restriction} %{fw_priority} -Denable-env-var=false -Denable-symbolic-link=true \
+	%{enable_tizen} %{element_restriction} %{fw_priority} -Denable-env-var=false -Denable-symbolic-link=false \
 	%{enable_tf_lite} %{enable_tf2_lite} %{enable_tf} %{enable_pytorch} %{enable_caffe2} %{enable_python3} \
 	%{enable_nnfw_runtime} %{enable_mvncsdk2} %{enable_openvino} %{enable_armnn} %{enable_edgetpu}  %{enable_vivante} \
 	%{enable_flatbuf} %{enable_trix_engine} \
@@ -886,7 +886,7 @@ popd
 %if 0%{?python3_support}
 mkdir -p %{buildroot}%{python3_sitelib}
 pushd %{buildroot}%{python3_sitelib}
-ln -sf %{_libdir}/nnstreamer_python3.so nnstreamer_python.so
+ln -sf %{_prefix}/lib/nnstreamer/extra/nnstreamer_python3.so nnstreamer_python.so
 popd
 %endif
 
@@ -946,8 +946,6 @@ cp -r result %{buildroot}%{_datadir}/nnstreamer/unittest/
 %{_prefix}/lib/nnstreamer/decoders/libnnstreamer_decoder_octet_stream.so
 %{_prefix}/lib/nnstreamer/filters/libnnstreamer_filter_cpp.so
 %{gstlibdir}/libnnstreamer.so
-# TODO migrate nnstreamer-edge and remove below library
-%{_libdir}/libnnstreamer-edge.so
 %{_libdir}/libnnstreamer.so
 
 %files single
@@ -986,9 +984,9 @@ cp -r result %{buildroot}%{_datadir}/nnstreamer/unittest/
 %files python3
 %manifest nnstreamer.manifest
 %defattr(-,root,root,-)
-%{_libdir}/nnstreamer_python3.so
 %{_prefix}/lib/nnstreamer/filters/libnnstreamer_filter_python3.so
 %{_prefix}/lib/nnstreamer/converters/libnnstreamer_converter_python3.so
+%{_prefix}/lib/nnstreamer/extra/nnstreamer_python3.so
 %{_prefix}/lib/nnstreamer/decoders/libnnstreamer_decoder_python3.so
 %{python3_sitelib}/nnstreamer_python.so
 %endif

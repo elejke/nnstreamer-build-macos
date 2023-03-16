@@ -24,7 +24,7 @@ if [ "$SKIPGEN" == "YES" ]; then
     sopath=$2
 else
     echo "Test Case Generation Started"
-    python3 generateGoldenTestResult.py
+    python generateGoldenTestResult.py
     sopath=$1
 fi
 convertBMP2PNG

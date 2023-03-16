@@ -7,7 +7,7 @@ nnstreamer_headers = []
 nnstreamer_single_deps = [
   glib_dep,
   gmodule_dep,
-  gobject_dep
+  gio_dep
 ]
 
 # log utils
@@ -26,7 +26,6 @@ nnstreamer_deps = [
   gst_video_dep,
   gst_audio_dep,
   thread_dep,
-  gio_dep
 ]
 
 if orcc_support_is_available

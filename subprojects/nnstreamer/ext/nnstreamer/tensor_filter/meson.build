@@ -213,7 +213,7 @@ if tflite2_support_is_available
 
   nnstreamer_filter_tflite2_deps = tflite2_support_deps + [thread_dep, libdl_dep, nnstreamer_single_dep]
 
-  tflite2_compile_args = []
+  tflite2_compile_args = ['-DTFLITE_SUBPLUGIN_NAME="tensorflow2-lite"']
   tflite2_compile_args += '-DTFLITE_INT8=1'
   tflite2_compile_args += '-DTFLITE_INT16=1'
   tflite2_compile_args += '-DTFLITE_FLOAT16=1'
@@ -260,9 +260,6 @@ if tflite2_support_is_available
     tflite2_compile_args += '-DTFLITE_EXTERNAL_DELEGATE_SUPPORTED'
   endif
 
-  tflite2_custom_compile_args = tflite2_compile_args
-  tflite2_compile_args += '-DTFLITE_SUBPLUGIN_NAME="tensorflow2-lite"'
-
   tflite2_extra_dep = declare_dependency(
     compile_args : tflite2_compile_args
   )
@@ -283,90 +280,6 @@ if tflite2_support_is_available
     install: true,
     install_dir: nnstreamer_libdir
   )
-
-
-  if get_option('tflite2-custom-support').enabled() or get_option('tflite2-custom-support').auto()
-    ## Create libtensorflow2-lite-custom.so support.
-
-    ## @todo This assumes the same tflite version with the above.
-    ##       If the user has downloaded libtensorflow-lite manually, it may incur inconsistency.
-    ## @todo This does not use pkgconfig or find_library/meson-dep info
-    ##       because it does not allow querying libpath and static/shared of a dependency object.
-    ## @todo If we are allowed to use meson > 0.53, use "FS" module!
-
-    filepaths = [
-        join_paths(meson.current_source_dir(), 'libtensorflow2-lite.so',),
-        join_paths(meson.current_build_dir(), 'libtensorflow2-lite.so',),
-        join_paths(nnstreamer_libdir, 'libtensorflow2-lite.so'),
-        '/usr/lib/libtensorflow2-lite.so',
-        '/usr/lib64/libtensorflow2-lite.so',
-        './libtensorflow2-lite.so',
-    ]
-    filepath = ''
-    foreach file : filepaths
-      if run_command('bash', '-c', '[ -f "' + file + '" ]').returncode() == 0
-        message('Found: ' + file)
-        filepath = file
-        configure_file (
-          input: file,
-          output: 'libtensorflow2-lite-custom.so',
-          copy: true
-        )
-        break
-      endif
-    endforeach
-
-    if filepath == ''
-      ## No shared tfl lib found. Get static lib and convert it
-
-      filepaths = [join_paths(nnstreamer_libdir, 'libtensorflow2-lite.a'),
-          '/usr/lib/libtensorflow2-lite.a',
-          '/usr/lib64/libtensorflow2-lite.a',
-          './libtensorflow2-lite.a',
-          join_paths(meson.current_build_dir(), 'libtensorflow2-lite.a',),
-          join_paths(meson.current_source_dir(), 'libtensorflow2-lite.a',)]
-
-      foreach file : filepaths
-        if run_command('bash', '-c', '[ -f "'+ file + '" ]').returncode() == 0
-          somake = run_command('gcc', '-shared', '-o', 'libtensorflow2-lite-custom.so', '-Wl,--whole-archive', file, '-Wl,--no-whole-archive')
-          if somake.returncode() == 0
-            message('Successfully created libtensorflow2-lite-custom.so from archive: ' + file)
-            configure_file (
-              input: join_paths(meson.current_source_dir(), 'libtensorflow2-lite-custom.so'),
-              output: 'libtensorflow2-lite-custom.so',
-              copy: true
-            )
-            filepath = file
-            break
-          else
-            error('Cannot create .so from: ' + file)
-          endif
-        endif
-      endforeach
-    endif
-
-    if filepath != ''
-      tflite2_custom_compile_args += '-DTFLITE_SUBPLUGIN_NAME="tensorflow2-lite-custom"'
-      tflite2_custom_extra_dep = declare_dependency( compile_args : tflite2_custom_compile_args )
-      tflc_dep = declare_dependency (
-        link_args: ['-L' + meson.current_build_dir(), '-ltensorflow2-lite-custom']
-      )
-      shared_library('nnstreamer_filter_tensorflow2-lite-custom',
-        nnstreamer_filter_tflite2_sources,
-        dependencies: [tflc_dep, thread_dep, libdl_dep, nnstreamer_single_dep, tflite2_ver_dep, tflite2_custom_extra_dep],
-        install: true,
-        install_dir:filter_subplugin_install_dir
-      )
-    else # no custom mode built
-      if get_option('tflite2-custom-support').enabled()
-        error('Cannot create tflite2-custom tensor-filter subplugin. No valid .so/.a of tensorflow2-lite found.')
-      endif
-    endif
-  endif
-else # no tflite2
-  if get_option('tflite2-custom-support').enabled()
-    error('tflite2-custom-support requires tflite2-support')
-  endif
 endif
 
 if pytorch_support_is_available
@@ -419,31 +332,6 @@ if caffe2_support_is_available
   static_library('nnstreamer_filter_caffe2',
     nnstreamer_filter_caffe2_sources,
     dependencies: nnstreamer_filter_caffe2_deps,
-    install: true,
-    install_dir: nnstreamer_libdir
-  )
-endif
-
-if deepview_rt_support_is_available
-  nnstreamer_filter_deepview_rt_deps = deepview_rt_support_deps + [glib_dep, gst_dep, nnstreamer_dep]
-
-  filter_sub_deepview_rt_sources = ['tensor_filter_deepview_rt.cc']
-
-  nnstreamer_filter_deepview_rt_sources = []
-  foreach s : filter_sub_deepview_rt_sources
-    nnstreamer_filter_deepview_rt_sources += join_paths(meson.current_source_dir(), s)
-  endforeach
-
-  shared_library('nnstreamer_filter_deepview-rt',
-    nnstreamer_filter_deepview_rt_sources,
-    dependencies: nnstreamer_filter_deepview_rt_deps,
-    install: true,
-    install_dir: filter_subplugin_install_dir
-  )
-
-  static_library('nnstreamer_filter_deepview-rt',
-    nnstreamer_filter_deepview_rt_sources,
-    dependencies: nnstreamer_filter_deepview_rt_deps,
     install: true,
     install_dir: nnstreamer_libdir
   )
@@ -638,19 +526,17 @@ if get_option('enable-mediapipe')
     error('Not Supported System & Architecture. Linux x86_64 is required')
   endif
 
-  cmd = run_command('sh', '-c', 'echo $MEDIAPIPE_HOME', check : true)
+  cmd = run_command('sh', '-c', 'echo $MEDIAPIPE_HOME')
   MEDIAPIPE_HOME = cmd.stdout().strip()
-  if MEDIAPIPE_HOME == ''
-    error('MEDIAPIPE_HOME is not set')
-  endif
-  message('MEDIAPIPE_HOME: ' + MEDIAPIPE_HOME)
-  # TODO: This is not a portable way to check if a directory exists
-  # After bumping up to 0.53.0, the following line can be replaced with one that uses FS module
-  mediapipe_dir_exist = run_command('[', '-d', MEDIAPIPE_HOME, ']', check : false).returncode()
-  if mediapipe_dir_exist != 0
+
+  mediapipe_env_exist = run_command('[', '-z', MEDIAPIPE_HOME, ']').returncode()
+  mediapipe_dir_exist = run_command('[', '-d', MEDIAPIPE_HOME, ']').returncode()
+
+  if mediapipe_env_exist != 1 and mediapipe_dir_exist != 0
     error('Cannot find MEDIAPIPE_HOME: ' + MEDIAPIPE_HOME)
   endif
 
+  message('MEDIAPIPE_HOME: ' + MEDIAPIPE_HOME)
   mediapipe_incdir = include_directories(
     MEDIAPIPE_HOME,
     join_paths(MEDIAPIPE_HOME, 'bazel-bin'),
@@ -658,7 +544,10 @@ if get_option('enable-mediapipe')
     join_paths(MEDIAPIPE_HOME, 'bazel-mediapipe/external/com_google_absl'),
   )
 
-  run_command('sh', '-c', meson.source_root() + '/tools/development/gen_mediapipe_libs.sh ' + nnstreamer_libdir, check : true)
+  cmd = run_command('sh', '-c', meson.source_root() + '/tools/development/gen_mediapipe_libs.sh ' + nnstreamer_libdir)
+  if cmd.returncode() != 0
+    error(cmd.stderr().strip())
+  endif
 
   mediapipe_internal_dep = cxx.find_library('mediapipe_internal', dirs: nnstreamer_libdir)
   mediapipe_external_dep = cxx.find_library('mediapipe_external', dirs: nnstreamer_libdir)
@@ -704,7 +593,7 @@ if get_option('enable-mediapipe')
   )
 endif
 
-run_command('sh', '-c', 'touch filter_snpe_list', check : true)
+run_command('sh', '-c', 'touch filter_snpe_list')
 if snpe_support_is_available
   filter_sub_snpe_sources = ['tensor_filter_snpe.cc']
 
@@ -733,7 +622,7 @@ if snpe_support_is_available
     install: true,
     install_dir: nnstreamer_libdir
   )
-  run_command('sh', '-c', 'echo "%{_prefix}/lib/nnstreamer/filters/libnnstreamer_filter_snpe.so" >> filter_snpe_list', check : true)
+  run_command('sh', '-c', 'echo "%{_prefix}/lib/nnstreamer/filters/libnnstreamer_filter_snpe.so" >> filter_snpe_list')
 endif
 
 if tensorrt_support_is_available
@@ -840,35 +729,5 @@ if trix_engine_support_is_available
     dependencies: nnstreamer_filter_trix_engine_deps,
     install: true,
     install_dir: nnstreamer_libdir
-  )
-endif
-
-if mxnet_support_is_available
-  if not get_option('enable-filter-cpp-class')
-    error ('enable-filter-cpp-class should be set as \'true\' to build the tensor filter for MXNet.')
-  endif
-
-  filter_sub_mxnet_sources = [
-    'tensor_filter_mxnet.cc'
-  ]
-
-  nnstreamer_filter_mxnet_sources = []
-  foreach s : filter_sub_mxnet_sources
-    nnstreamer_filter_mxnet_sources += join_paths(meson.current_source_dir(), s)
-  endforeach
-
-  nnstreamer_filter_mxnet_deps = mxnet_support_deps + [glib_dep, gst_dep, nnstreamer_dep, libdl_dep]
-
-  nnstreamer_filter_mxnet_so_lib = shared_library('nnstreamer_filter_mxnet',
-    nnstreamer_filter_mxnet_sources,
-    dependencies: nnstreamer_filter_mxnet_deps,
-    install: true,
-    install_dir: filter_subplugin_install_dir,
-    cpp_args: ['-Wno-non-virtual-dtor']
-  )
-
-  nnstreamer_filter_mxnet_dep = declare_dependency(
-    link_with: nnstreamer_filter_mxnet_so_lib,
-    include_directories: include_directories('.')
   )
 endif
